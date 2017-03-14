@@ -1,5 +1,6 @@
 package com.example;
 
+import com.example.config.DBConfig;
 import com.example.controller.HelloController;
 import org.junit.Before;
 import org.junit.Test;
@@ -42,5 +43,13 @@ public class DemoApplicationTests {
 		System.out.println(appProperties.getRandomString());
 	}
 
+
+	@Autowired
+	private DBConfig dbConfig;
+
+	@Test
+	public void testDbConfig(){
+		System.out.println(dbConfig.getPassword());
+	}
 
 }
