@@ -24,6 +24,7 @@ public class DBConfig {
 	}
 
 	public String getPassword() {
+
 		return password;
 	}
 }
