@@ -50,6 +50,8 @@ public class DemoApplicationTests {
 	@Test
 	public void testDbConfig(){
 		System.out.println(dbConfig.getPassword());
+		System.out.println(dbConfig.getTestNull());
+		System.out.println(dbConfig.getUsername());
 	}
 
 }

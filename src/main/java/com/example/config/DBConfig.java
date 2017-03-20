@@ -14,10 +14,20 @@ import org.springframework.stereotype.Component;
  */
 @Component
 @PropertySource("classpath:db.properties") //指定配置文件位置
-@ConfigurationProperties(prefix = "jdbc") //指定配置文件中属性的前缀信息
+@ConfigurationProperties() //指定配置文件中属性的前缀信息
 public class DBConfig {
 
 	private String password;
+	private String username;
+	private String testNull = "i am default";
+
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
 
 	public void setPassword(String password) {
 		this.password = password;
@@ -26,5 +36,13 @@ public class DBConfig {
 	public String getPassword() {
 
 		return password;
+	}
+
+	public String getTestNull() {
+		return testNull;
+	}
+
+	public void setTestNull(String testNull) {
+		this.testNull = testNull;
 	}
 }
