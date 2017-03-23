@@ -2,8 +2,13 @@ package com.example.persistence.mapper;
 
 import com.example.persistence.domain.Car;
 import me.oldriver.commons.mybatis.plugin.Table;
-import org.apache.ibatis.annotations.Param;
+import me.oldriver.commons.mybatis.plugin.page.Page;
 
+import java.util.List;
+
+/**
+ *
+ */
 @Table("car")
 public interface CarMapper {
     /**
@@ -53,6 +58,14 @@ public interface CarMapper {
      * @mbggenerated
      */
     int updateByPrimaryKey(Car record);
+
+	/**
+	 * 查询全部
+	 * @param page
+	 *
+	 * @return
+	 */
+	List<Car> selectAll(Page page);
 
 
 }

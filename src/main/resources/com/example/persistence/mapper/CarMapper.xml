@@ -92,4 +92,8 @@
             inventory = #{inventory,jdbcType=INTEGER}
         where id = #{id,jdbcType=BIGINT}
     </update>
+
+    <select id="selectAll" resultMap="BaseResultMap" >
+        select * from car
+    </select>
 </mapper>

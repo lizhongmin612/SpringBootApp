@@ -7,10 +7,13 @@ package com.example.controller;
 import com.example.persistence.domain.Car;
 import com.example.persistence.mapper.CarMapper;
 import com.example.vo.Student;
+import me.oldriver.commons.mybatis.plugin.page.Page;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 /**
  * @author <a href="mailto:lzm8285@163.com">Li Zhongmin</a>
@@ -41,5 +44,13 @@ public class HelloController {
 	public Car getCar(@PathVariable("brandId") long brandId){
 		System.out.println("汽车:"+brandId);
 		return carMapper.selectByPrimaryKey(brandId);
+	}
+
+	@RequestMapping("carlist/{currentPage}")
+	public List<Car> getCarList(@PathVariable(name="currentPage") int currentPage){
+		Page page = new Page();
+		page.setPageSize(2);
+		page.setCurrentPage(currentPage);
+		return carMapper.selectAll(page);
 	}
 }
