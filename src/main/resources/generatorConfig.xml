@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+<generatorConfiguration>
+
+    <!-- mysql驱动目录,自行修改 -->
+    <classPathEntry location="lib/mysql-connector-java-5.1.30.jar" />
+
+    <context id="mysql">
+		<plugin type="me.oldriver.commons.mybatis.generator.plugins.SerializablePlugin" />
+        <commentGenerator>
+            <property name="javaFileEncoding" value="UTF-8"/>
+            <!-- 允许代码生成器生成日期-->
+            <property name="suppressDate" value="true"/>
+        </commentGenerator>
+
+        <!-- 配置数据库连接 -->
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://101.200.123.33:3306/store"
+                        userId="root"
+                        password="gfs2016#"/>
+
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+
+
+        <!-- model生成位置,以及包名-->
+        <javaModelGenerator targetPackage="com.example.persistence.domain"
+                            targetProject="src/main/java">
+            <property name="enableSubPackages" value="true"/>
+            <property name="trimStrings" value="true"/>
+        </javaModelGenerator>
+
+        <!-- xml文件生成位置,以及包名-->
+        <sqlMapGenerator targetPackage="com.example.persistence.mapper"
+                         targetProject="src/main/resources">
+            <property name="enableSubPackages" value="true"/>
+        </sqlMapGenerator>
+
+        <!-- xml文件生成位置,以及包名-->
+        <javaClientGenerator type="XMLMAPPER"
+                             targetPackage="com.example.persistence.mapper" targetProject="src/main/java">
+            <property name="enableSubPackages" value="true"/>
+        </javaClientGenerator>
+
+        <!-- 想要生成的表名写到下面-->
+        <table tableName="car" domainObjectName="Car">
+            <generatedKey column="id" sqlStatement="JDBC"/>
+        </table>
+    </context>
+</generatorConfiguration>

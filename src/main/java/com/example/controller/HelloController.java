@@ -38,7 +38,8 @@ public class HelloController {
 	}
 
 	@RequestMapping("car/{brandId}")
-	public Car getCar(@PathVariable("brandId") int brandId){
-		return carMapper.selectByBrandId(brandId);
+	public Car getCar(@PathVariable("brandId") long brandId){
+		System.out.println("汽车:"+brandId);
+		return carMapper.selectByPrimaryKey(brandId);
 	}
 }
